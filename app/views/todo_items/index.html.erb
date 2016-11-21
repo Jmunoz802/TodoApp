@@ -1,0 +1,31 @@
+<h1>Listing todo_items</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Desc</th>
+      <th>User</th>
+      <th>Deadline</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @todo_items.each do |todo_item| %>
+        <td><%= todo_item.title %></td>
+        <tr>
+        <td><%= todo_item.desc %></td>
+        <td><%= link_to todo_item.user.name, todo_item.user %></td>
+        <td><%= todo_item.deadline %></td>
+        <td><%= link_to 'Show', todo_item %></td>
+        <td><%= link_to 'Edit', edit_todo_item_path(todo_item) %></td>
+        <td><%= link_to 'Destroy', todo_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Todo item', new_todo_item_path %>
